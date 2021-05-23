@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:football_not_soccer/core/standings/standings_detail.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: StandingsdetailWidget(),
     );
   }
 }
@@ -26,4 +27,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
