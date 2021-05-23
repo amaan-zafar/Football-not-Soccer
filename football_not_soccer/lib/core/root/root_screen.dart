@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
 import 'package:football_not_soccer/constants/strings.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
@@ -22,28 +23,28 @@ class _RootScreenState extends State<RootScreen> {
         items: [
           /// Home
           SalomonBottomBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(AppIcons.home),
             title: Text(AppStrings.HOME),
             selectedColor: Colors.purple,
           ),
 
           /// Likes
           SalomonBottomBarItem(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(AppIcons.discovery),
             title: Text(AppStrings.EXPLORE),
             selectedColor: Colors.pink,
           ),
 
           /// Search
           SalomonBottomBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(AppIcons.chart),
             title: Text(AppStrings.STANDINGS),
             selectedColor: Colors.orange,
           ),
 
           /// Profile
           SalomonBottomBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(AppIcons.profile),
             title: Text(AppStrings.PROFILE),
             selectedColor: Colors.teal,
           ),

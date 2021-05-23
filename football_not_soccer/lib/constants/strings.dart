@@ -1,7 +1,7 @@
 library constants;
 
 class AppStrings {
-  static const String APP_LABEL = 'Football Not Soccer';
+  static const String APP_LABEL = 'FNS';
   static const String APP_SLOGAN = 'Only Stats';
 
   static const String HOME = 'Home';
