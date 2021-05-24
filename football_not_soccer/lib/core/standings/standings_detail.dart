@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
+import 'package:football_not_soccer/constants/colors.dart';
 
 class StandingsdetailWidget extends StatefulWidget {
   @override
@@ -9,158 +10,202 @@ class StandingsdetailWidget extends StatefulWidget {
 }
 
 class _StandingsdetailWidgetState extends State<StandingsdetailWidget> {
+  List<DataRow> _rows = [
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('1')),
+        DataCell(Text('Atletico Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+    DataRow(
+      cells: <DataCell>[
+        DataCell(Text('2')),
+        DataCell(Text('Real Madrid')),
+        DataCell(Text('14')),
+        DataCell(Text('7')),
+        DataCell(Text('5')),
+        DataCell(Text('2')),
+        DataCell(Text('26')),
+      ],
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator StandingsdetailWidget - FRAME
 
     return Scaffold(
-      appBar: AppBar(
-        leading:
-            IconButton(icon: Icon(AppIcons.arrow___left_2), onPressed: () => {}
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            leading: IconButton(
+                icon: Icon(AppIcons.arrow___left_2), onPressed: () => {}
                 // Navigator.of(context).pop(),
                 ),
-        title: Text(
-          '🇪🇸 Spain',
-          style: TextStyle(
-              color: Color.fromRGBO(255, 255, 255, 1),
-              fontFamily: 'Source Sans Pro',
-              fontSize: 16,
-              letterSpacing:
-                  0 /*percentages not used in flutter. defaulting to zero*/,
-              fontWeight: FontWeight.normal,
-              height: 1.3125),
-        ),
+            title: Text('🇪🇸 Spain',
+                style: Theme.of(context).textTheme.headline5),
+            pinned: true,
+            expandedHeight: 200,
+            // stretch: true,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Image.network(
+                  'https://i.cdn.newsbytesapp.com/images/l147_9221595405241.jpg',
+                  fit: BoxFit.cover),
+            ),
+          ),
+          SliverToBoxAdapter(
+              child: DataTable(
+            columnSpacing: 8,
+            columns: [
+              DataColumn(label: Text('#')),
+              DataColumn(label: Text('Team')),
+              DataColumn(label: Text('P')),
+              DataColumn(label: Text('W')),
+              DataColumn(label: Text('D')),
+              DataColumn(label: Text('L')),
+              DataColumn(label: Text('Pts.')),
+            ],
+            rows: _rows,
+          )),
+        ],
       ),
-      body: Stack(children: <Widget>[]),
     );
-  }
-}
-
-class ColumnHeadings extends StatelessWidget {
-  const ColumnHeadings({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: 318.9999084472656,
-        height: 30,
-        child: Stack(children: <Widget>[
-          Positioned(
-              top: 0,
-              left: 27.999902725219727,
-              child: Text(
-                'Team',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 14,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.normal,
-                    height: 2.0714285714285716),
-              )),
-          Positioned(
-              top: 0,
-              left: 8.99990177154541,
-              child: Text(
-                '#',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 14,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.normal,
-                    height: 2.0714285714285716),
-              )),
-          Positioned(
-              top: 0,
-              left: 163.9998779296875,
-              child: Text(
-                'D',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 14,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.normal,
-                    height: 2.0714285714285716),
-              )),
-          Positioned(
-              top: 0,
-              left: 190.9998779296875,
-              child: Text(
-                'L',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 14,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.normal,
-                    height: 2.0714285714285716),
-              )),
-          Positioned(
-              top: 0,
-              left: 215.9998779296875,
-              child: Text(
-                'Ga',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 14,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.normal,
-                    height: 2.0714285714285716),
-              )),
-          Positioned(
-              top: 0,
-              left: 249.9998779296875,
-              child: Text(
-                'Gd',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 14,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.normal,
-                    height: 2.0714285714285716),
-              )),
-          Positioned(
-              top: 0,
-              left: 284.9998779296875,
-              child: Text(
-                'Pts',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 14,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.normal,
-                    height: 2.0714285714285716),
-              )),
-          Positioned(
-              top: 28.97289276123047,
-              left: 319,
-              child: Transform.rotate(
-                angle: -179.81552107384994 * (math.pi / 180),
-                child:
-                    Divider(color: Color.fromRGBO(42, 42, 60, 1), thickness: 1),
-              )),
-        ]));
   }
 }
 
