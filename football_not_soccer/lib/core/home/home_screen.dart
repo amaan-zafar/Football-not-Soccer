@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:football_not_soccer/constants/strings.dart';
 
-class StandingsScreen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text(AppStrings.STANDINGS),
+        child: Text(AppStrings.HOME),
       ),
     );
   }
