@@ -4,12 +4,15 @@ import 'dart:math' as math;
 import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
 import 'package:football_not_soccer/constants/colors.dart';
 
-class StandingsdetailWidget extends StatefulWidget {
+class StandingsScreen extends StatefulWidget {
+  final String leagueCode;
+
+  const StandingsScreen({Key? key, required this.leagueCode}) : super(key: key);
   @override
-  _StandingsdetailWidgetState createState() => _StandingsdetailWidgetState();
+  _StandingsScreenState createState() => _StandingsScreenState();
 }
 
-class _StandingsdetailWidgetState extends State<StandingsdetailWidget> {
+class _StandingsScreenState extends State<StandingsScreen> {
   List<DataRow> _rows = [
     DataRow(
       cells: <DataCell>[
@@ -168,7 +171,7 @@ class _StandingsdetailWidgetState extends State<StandingsdetailWidget> {
   ];
   @override
   Widget build(BuildContext context) {
-    // Figma Flutter Generator StandingsdetailWidget - FRAME
+    // Figma Flutter Generator StandingsScreen - FRAME
 
     return Scaffold(
       body: CustomScrollView(

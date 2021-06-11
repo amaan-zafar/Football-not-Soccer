@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:football_not_soccer/core/standings/league_container.dart';
-import 'package:football_not_soccer/core/standings/standings_screen.dart';
+import 'package:football_not_soccer/core/leagues/competitions/league_container.dart';
+
+import '../standings_screen.dart';
 
 class CompetitionsScreen extends StatelessWidget {
   const CompetitionsScreen({Key? key}) : super(key: key);
@@ -23,50 +24,74 @@ class CompetitionsScreen extends StatelessWidget {
               GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
+                crossAxisSpacing: 32,
+                mainAxisSpacing: 32,
                 children: [
                   GestureDetector(
                     child:
                         LeagueContainer(image: 'assets/images/bundesliga.png'),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => StandingsScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => StandingsScreen(
+                                    leagueCode: 'BL1',
+                                  )));
                     },
                   ),
                   GestureDetector(
                     child: LeagueContainer(image: 'assets/images/laliga.png'),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => StandingsScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => StandingsScreen(
+                                    leagueCode: 'PD',
+                                  )));
                     },
                   ),
                   GestureDetector(
                     child: LeagueContainer(image: 'assets/images/ligue1.png'),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => StandingsScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => StandingsScreen(
+                                    leagueCode: 'FL1',
+                                  )));
                     },
                   ),
                   GestureDetector(
                     child: LeagueContainer(image: 'assets/images/nos.png'),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => StandingsScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => StandingsScreen(
+                                    leagueCode: 'PPL',
+                                  )));
                     },
                   ),
                   GestureDetector(
                     child: LeagueContainer(image: 'assets/images/pl.png'),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => StandingsScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => StandingsScreen(
+                                    leagueCode: 'PL',
+                                  )));
                     },
                   ),
                   GestureDetector(
                     child: LeagueContainer(image: 'assets/images/seria.png'),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => StandingsScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => StandingsScreen(
+                                    leagueCode: 'SA',
+                                  )));
                     },
                   ),
                 ],

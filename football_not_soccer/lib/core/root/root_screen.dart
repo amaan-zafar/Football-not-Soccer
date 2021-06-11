@@ -3,9 +3,8 @@ import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
 import 'package:football_not_soccer/constants/strings.dart';
 import 'package:football_not_soccer/core/explore/explore_screen.dart';
 import 'package:football_not_soccer/core/home/home_screen.dart';
+import 'package:football_not_soccer/core/leagues/competitions/competitions_screen.dart';
 import 'package:football_not_soccer/core/profile/profile_screen.dart';
-import 'package:football_not_soccer/core/standings/standings_detail.dart';
-import 'package:football_not_soccer/core/standings/standings_screen.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class RootScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class _RootScreenState extends State<RootScreen> {
   final List<Widget> _children = [
     HomeScreen(),
     ExploreScreen(),
-    StandingsdetailWidget(),
+    CompetitionsScreen(),
     ProfileScreen()
   ];
 

@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'dart:async';
 
 class ApiProvider {
-  static const String _baseUrl = "";
+  static const String _baseUrl = 'https://api.football-data.org/v2/';
   final http.Client httpClient;
 
   ApiProvider({required this.httpClient});
