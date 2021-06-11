@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:football_not_soccer/config/themes/dark_theme.dart';
 import 'package:football_not_soccer/constants/strings.dart';
+import 'package:football_not_soccer/core/leagues/standings/bloc/bloc_observer.dart';
 import 'package:football_not_soccer/core/leagues/standings/standings_repo.dart';
 import 'package:football_not_soccer/core/root/root_screen.dart';
 import 'package:football_not_soccer/network/api_base_helper.dart';
@@ -11,6 +12,7 @@ import 'package:http/http.dart' as http;
 import 'core/leagues/standings/bloc/standings_bloc.dart';
 
 void main() {
+  Bloc.observer = SimpleBlocObserver();
   final http.Client _client = http.Client();
   final StandingsRepository _standingsRepository =
       StandingsRepository(apiProvider: ApiProvider(httpClient: _client));
