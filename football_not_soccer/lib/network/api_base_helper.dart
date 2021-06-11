@@ -6,15 +6,22 @@ import 'dart:async';
 
 class ApiProvider {
   static const String _baseUrl = 'https://api.football-data.org/v2/';
+  static const String _apiKey = '0bfa08b467cc4a2f84f1481a79d4b113';
   final http.Client httpClient;
 
   ApiProvider({required this.httpClient});
 
-  Future<dynamic> get(String url) async {
+  Future<dynamic> get(String url, {required bool requireApiKey}) async {
     var responseJson;
     try {
-      final response = await httpClient.get(Uri.parse(_baseUrl + url));
-      responseJson = _response(response);
+      if (requireApiKey) {
+        final response = await httpClient
+            .get(Uri.parse(_baseUrl + url), headers: {'X-Auth-Token': _apiKey});
+        responseJson = _response(response);
+      } else {
+        final response = await httpClient.get(Uri.parse(_baseUrl + url));
+        responseJson = _response(response);
+      }
     } on SocketException {
       throw FetchDataException('No Internet connection');
     }
