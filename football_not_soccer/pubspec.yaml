@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   salomon_bottom_bar: ^3.0.0
   http: ^0.13.3
+  equatable: ^2.0.2
   flutter_svg: ^0.22.0
   flutter_bloc: ^7.0.1
   shimmer: ^2.0.0

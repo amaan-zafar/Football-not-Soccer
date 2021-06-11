@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:football_not_soccer/core/leagues/competitions/league_container.dart';
 
-import '../standings_screen.dart';
+import '../standings/standings_screen.dart';
 
 class CompetitionsScreen extends StatelessWidget {
   const CompetitionsScreen({Key? key}) : super(key: key);
