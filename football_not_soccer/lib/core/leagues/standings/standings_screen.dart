@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:math' as math;
 import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
 import 'package:football_not_soccer/constants/colors.dart';
 import 'package:football_not_soccer/core/leagues/standings/bloc/standings_bloc.dart';
@@ -50,6 +49,7 @@ class TableBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     List<LeagueTable> table = standingsModel.standings[0].leagueTable;
     _rows = [];
     table.forEach((element) {
@@ -125,24 +125,26 @@ class TableBody extends StatelessWidget {
         SliverToBoxAdapter(
             child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: DataTable(
-              columnSpacing: 8,
-              columns: [
-                DataColumn(label: Text('#')),
-                DataColumn(label: Text('Team')),
-                DataColumn(label: Text('P')),
-                DataColumn(label: Text('W')),
-                DataColumn(label: Text('D')),
-                DataColumn(label: Text('L')),
-                DataColumn(label: Text('GF')),
-                DataColumn(label: Text('GA')),
-                DataColumn(label: Text('GD')),
-                DataColumn(label: Text('Pts.')),
-                DataColumn(label: Text('Last 5')),
-              ],
-              rows: _rows,
+          child: Center(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: DataTable(
+                columnSpacing: width > 700 ? 40 : 8,
+                columns: [
+                  DataColumn(label: Text('#')),
+                  DataColumn(label: Text('Team')),
+                  DataColumn(label: Text('P')),
+                  DataColumn(label: Text('W')),
+                  DataColumn(label: Text('D')),
+                  DataColumn(label: Text('L')),
+                  DataColumn(label: Text('GF')),
+                  DataColumn(label: Text('GA')),
+                  DataColumn(label: Text('GD')),
+                  DataColumn(label: Text('Pts.')),
+                  DataColumn(label: Text('Last 5')),
+                ],
+                rows: _rows,
+              ),
             ),
           ),
         )),

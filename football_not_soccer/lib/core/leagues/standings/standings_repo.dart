@@ -6,7 +6,6 @@ class StandingsRepository {
 
   StandingsRepository({required this.apiProvider});
 
-  @override
   Future<StandingsModel> fetchStandings({required String leagueCode}) async {
     final response = await apiProvider.get('competitions/$leagueCode/standings',
         requireApiKey: true);

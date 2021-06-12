@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
-import 'package:football_not_soccer/constants/strings.dart';
 
 class ExploreScreen extends StatelessWidget {
   @override
