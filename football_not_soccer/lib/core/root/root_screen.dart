@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
-import 'package:football_not_soccer/constants/colors.dart';
 import 'package:football_not_soccer/constants/strings.dart';
 import 'package:football_not_soccer/core/explore/explore_screen.dart';
 import 'package:football_not_soccer/core/home/home_screen.dart';

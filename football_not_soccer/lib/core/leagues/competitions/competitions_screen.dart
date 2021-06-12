@@ -23,8 +23,7 @@ class CompetitionsScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Container(
-                margin:
-                    true ? EdgeInsets.symmetric(horizontal: width * 0.2) : null,
+                margin: EdgeInsets.symmetric(horizontal: width * 0.2),
                 child: GridView.count(
                   crossAxisCount: width > 1000
                       ? 4
