@@ -1,0 +1,4 @@
+#Sat Jun 12 18:50:53 IST 2021
+base.0=D\:\\My Projects\\Flutter Projects\\Football-not-Soccer\\football_not_soccer\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
