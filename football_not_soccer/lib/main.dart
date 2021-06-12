@@ -6,7 +6,6 @@ import 'package:football_not_soccer/core/leagues/standings/bloc/bloc_observer.da
 import 'package:football_not_soccer/core/leagues/standings/standings_repo.dart';
 import 'package:football_not_soccer/core/root/root_screen.dart';
 import 'package:football_not_soccer/network/api_base_helper.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:http/http.dart' as http;
 
 import 'core/leagues/standings/bloc/standings_bloc.dart';

@@ -18,11 +18,11 @@ class StandingsLoading extends StandingsState {
 }
 
 class StandingsLoaded extends StandingsState {
-  final List<TablePosition> standingsList;
+  final StandingsModel standingsModel;
 
-  const StandingsLoaded({required this.standingsList});
+  const StandingsLoaded({required this.standingsModel});
   @override
-  List<Object> get props => [standingsList];
+  List<Object> get props => [standingsModel];
 }
 
 class StandingsError extends StandingsState {

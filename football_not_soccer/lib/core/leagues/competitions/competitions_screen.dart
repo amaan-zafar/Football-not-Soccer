@@ -36,6 +36,7 @@ class CompetitionsScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (_) => StandingsScreen(
                                     leagueCode: 'BL1',
+                                    leagueLogo: 'assets/images/bundesliga.png',
                                   )));
                     },
                   ),
@@ -47,6 +48,7 @@ class CompetitionsScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (_) => StandingsScreen(
                                     leagueCode: 'PD',
+                                    leagueLogo: 'assets/images/laliga.png',
                                   )));
                     },
                   ),
@@ -58,6 +60,7 @@ class CompetitionsScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (_) => StandingsScreen(
                                     leagueCode: 'FL1',
+                                    leagueLogo: 'assets/images/ligue1.png',
                                   )));
                     },
                   ),
@@ -69,6 +72,7 @@ class CompetitionsScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (_) => StandingsScreen(
                                     leagueCode: 'PPL',
+                                    leagueLogo: 'assets/images/nos.png',
                                   )));
                     },
                   ),
@@ -80,6 +84,7 @@ class CompetitionsScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (_) => StandingsScreen(
                                     leagueCode: 'PL',
+                                    leagueLogo: 'assets/images/pl.png',
                                   )));
                     },
                   ),
@@ -91,6 +96,7 @@ class CompetitionsScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (_) => StandingsScreen(
                                     leagueCode: 'SA',
+                                    leagueLogo: 'assets/images/seria.png',
                                   )));
                     },
                   ),

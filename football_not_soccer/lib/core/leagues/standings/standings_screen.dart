@@ -1,213 +1,109 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:math' as math;
-
 import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
-import 'package:football_not_soccer/constants/colors.dart';
+import 'package:football_not_soccer/core/leagues/standings/bloc/standings_bloc.dart';
+import 'package:football_not_soccer/core/leagues/standings/standings_model.dart';
 
 class StandingsScreen extends StatefulWidget {
   final String leagueCode;
+  final String leagueLogo;
 
-  const StandingsScreen({Key? key, required this.leagueCode}) : super(key: key);
+  const StandingsScreen(
+      {Key? key, required this.leagueCode, required this.leagueLogo})
+      : super(key: key);
   @override
   _StandingsScreenState createState() => _StandingsScreenState();
 }
 
 class _StandingsScreenState extends State<StandingsScreen> {
-  List<DataRow> _rows = [
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('1')),
-        DataCell(Text('Atletico Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-    DataRow(
-      cells: <DataCell>[
-        DataCell(Text('2')),
-        DataCell(Text('Real Madrid')),
-        DataCell(Text('14')),
-        DataCell(Text('7')),
-        DataCell(Text('5')),
-        DataCell(Text('2')),
-        DataCell(Text('26')),
-      ],
-    ),
-  ];
+  List<DataRow> _rows = [];
+
   @override
   Widget build(BuildContext context) {
-    // Figma Flutter Generator StandingsScreen - FRAME
+    final standingsBloc = BlocProvider.of<StandingsBloc>(context);
+    standingsBloc.add(GetStandings(leagueCode: widget.leagueCode));
+    return Scaffold(body: BlocBuilder<StandingsBloc, StandingsState>(
+      builder: (context, state) {
+        // if (state is StandingsLoading)
+        //   return TableBody(rows: _rows);
+        if (state is StandingsLoaded) {
+          List<LeagueTable> table =
+              state.standingsModel.standings[0].leagueTable;
+          table.forEach((element) {
+            _rows.add(DataRow(
+              cells: <DataCell>[
+                DataCell(Text(element.position.toString())),
+                DataCell(Text(element.team.name)),
+                DataCell(Text(element.playedGames.toString())),
+                DataCell(Text(element.won.toString())),
+                DataCell(Text(element.draw.toString())),
+                DataCell(Text(element.lost.toString())),
+                DataCell(Text(element.points.toString())),
+              ],
+            ));
+          });
+          return TableBody(
+            rows: _rows,
+            competition: state.standingsModel.competition,
+            leagueLogo: widget.leagueLogo,
+          );
+        }
+        //  else if (state is StandingsError) return TableBody(rows: _rows);
+        return Container();
+      },
+    ));
+  }
+}
 
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            leading: IconButton(
-                icon: Icon(AppIcons.arrow___left_2), onPressed: () => {}
-                // Navigator.of(context).pop(),
-                ),
-            title: Text('🇪🇸 Spain',
-                style: Theme.of(context).textTheme.headline5),
-            pinned: true,
-            expandedHeight: 200,
-            // stretch: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Image.network(
-                  'https://i.cdn.newsbytesapp.com/images/l147_9221595405241.jpg',
-                  fit: BoxFit.cover),
+class TableBody extends StatelessWidget {
+  const TableBody(
+      {Key? key,
+      required this.rows,
+      required this.competition,
+      required this.leagueLogo})
+      : super(key: key);
+
+  final List<DataRow> rows;
+  final Competition competition;
+  final String leagueLogo;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          leading: IconButton(
+              icon: Icon(AppIcons.arrow___left_2), onPressed: () => {}
+              // Navigator.of(context).pop(),
+              ),
+          title: Text(competition.country,
+              style: Theme.of(context).textTheme.headline5),
+          pinned: true,
+          expandedHeight: 200,
+          // stretch: true,
+          flexibleSpace: FlexibleSpaceBar(
+            background: Image.asset(
+              leagueLogo,
+              fit: BoxFit.contain,
             ),
           ),
-          SliverToBoxAdapter(
-              child: DataTable(
-            columnSpacing: 8,
-            columns: [
-              DataColumn(label: Text('#')),
-              DataColumn(label: Text('Team')),
-              DataColumn(label: Text('P')),
-              DataColumn(label: Text('W')),
-              DataColumn(label: Text('D')),
-              DataColumn(label: Text('L')),
-              DataColumn(label: Text('Pts.')),
-            ],
-            rows: _rows,
-          )),
-        ],
-      ),
+        ),
+        SliverToBoxAdapter(
+            child: DataTable(
+          columnSpacing: 8,
+          columns: [
+            DataColumn(label: Text('#')),
+            DataColumn(label: Text('Team')),
+            DataColumn(label: Text('P')),
+            DataColumn(label: Text('W')),
+            DataColumn(label: Text('D')),
+            DataColumn(label: Text('L')),
+            DataColumn(label: Text('Pts.')),
+          ],
+          rows: rows,
+        )),
+      ],
     );
   }
 }
