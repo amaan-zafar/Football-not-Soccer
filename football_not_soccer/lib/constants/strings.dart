@@ -6,7 +6,7 @@ class AppStrings {
 
   static const String HOME = 'Home';
   static const String EXPLORE = 'Explore';
-  static const String STANDINGS = 'Leagues';
+  static const String STANDINGS = 'Standings';
   static const String PROFILE = 'Profile';
 
   static const String SAVE_CHANGES = 'Save Changes';
