@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/example/football_not_soccer/BuildConfig.java
- com.example.football_not_soccer.BuildConfig
