@@ -34,7 +34,7 @@ class _RootScreenState extends State<RootScreen> {
                     borderRadius: BorderRadius.circular(64),
                     color: Colors.grey[100]),
                 margin: EdgeInsets.symmetric(
-                    vertical: 32, horizontal: width * 0.15),
+                    vertical: 32, horizontal: width > 500 ? width * 0.15 : 8),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: buildNavBar(),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "282574223155",
+    "project_id": "football-not-soccer",
+    "storage_bucket": "football-not-soccer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282574223155:android:4fb882958d4811861a3046",
+        "android_client_info": {
+          "package_name": "com.example.football_not_soccer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282574223155-8ftacpeg1tvkagq7r5c9n1ok4bncd3oj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEBjC2rv5_nHKJDFVghI_5C1Fo-bqB0ys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "282574223155-8ftacpeg1tvkagq7r5c9n1ok4bncd3oj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
