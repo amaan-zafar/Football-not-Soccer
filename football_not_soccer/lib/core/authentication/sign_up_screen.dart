@@ -3,19 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:football_not_soccer/core/authentication/bloc/authentication_bloc.dart';
 import 'package:football_not_soccer/core/authentication/sign_in_screen.dart';
-import 'package:football_not_soccer/core/authentication/user_model.dart';
+import 'package:football_not_soccer/core/authentication/bloc/authentication_event.dart';
 import 'package:football_not_soccer/core/root/root_screen.dart';
 import 'package:football_not_soccer/widgets/auth_provider_buttons.dart';
 import 'package:football_not_soccer/widgets/card.dart';
 import 'package:football_not_soccer/widgets/rounded_button.dart';
 import 'package:football_not_soccer/widgets/textfield_container.dart';
-import 'package:auth_buttons/auth_buttons.dart'
-    show
-        GoogleAuthButton,
-        FacebookAuthButton,
-        AuthButtonStyle,
-        AuthButtonType,
-        AuthIconType;
 
 class SignUp extends StatefulWidget {
   @override
@@ -24,7 +17,8 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   User? firebaseUser;
-  UserModel user = UserModel();
+  String? email;
+  String? password;
   TextEditingController _passController = TextEditingController();
   bool _passObscureText = true;
   bool _confirmPassObscureText = true;
@@ -62,7 +56,7 @@ class _SignUpState extends State<SignUp> {
           return null;
         },
         onSaved: (String? value) {
-          user.email = value!.trim();
+          email = value!.trim();
         },
       ),
     );
@@ -126,23 +120,25 @@ class _SignUpState extends State<SignUp> {
         return null;
       },
       onSaved: (String? value) {
-        user.password = value;
+        password = value;
       },
     ));
   }
 
-  Widget _buildCreateAccountBtn() {
+  Widget _buildCreateAccountBtn(BuildContext context) {
+    final authBloc = BlocProvider.of<AuthenticationBloc>(context);
     return Center(
         child: RoundButton(
-      textOnButton: 'CREATE ACCOUNT',
-      onPressed: () {
-        navigateToUserInfo();
-        // if (!_formKey.currentState!.validate()) {
-        //   return;
-        // } else {
-        //   _formKey.currentState!.save();
-        //   navigateToUserInfo(user);
-        // }
+      textOnButton: 'Create Account',
+      onPressed: () async {
+        if (!_formKey.currentState!.validate()) {
+          return;
+        } else {
+          _formKey.currentState!.save();
+          User? user = await authBloc.authRepository
+              .signUpWithCredentials(email!, password!);
+          if (user != null) authBloc.add(LoggedIn(user));
+        }
       },
     ));
   }
@@ -160,12 +156,6 @@ class _SignUpState extends State<SignUp> {
         ],
       ),
     );
-  }
-
-  void navigateToUserInfo() {
-    print('navigationg');
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => RootScreen()));
   }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -196,7 +186,7 @@ class _SignUpState extends State<SignUp> {
                   _buildPassword(),
                   _buildConfirmPassword(),
                   Container(height: 22),
-                  _buildCreateAccountBtn(),
+                  _buildCreateAccountBtn(context),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:football_not_soccer/core/authentication/bloc/authentication_bloc.dart';
+import 'package:football_not_soccer/core/authentication/bloc/authentication_event.dart';
 import 'package:football_not_soccer/core/authentication/sign_up_screen.dart';
-import 'package:football_not_soccer/core/authentication/user_model.dart';
 import 'package:football_not_soccer/core/root/root_screen.dart';
 import 'package:football_not_soccer/widgets/auth_provider_buttons.dart';
 import 'package:football_not_soccer/widgets/card.dart';
@@ -17,20 +17,14 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   User? firebaseUser;
-  UserModel user = UserModel();
+  String? email;
+  String? password;
   TextEditingController _passController = TextEditingController();
   bool _passObscureText = true;
-  bool _confirmPassObscureText = true;
 
   void _togglePassVisibility() {
     setState(() {
       _passObscureText = !_passObscureText;
-    });
-  }
-
-  void _toggleConfirmPassVisibility() {
-    setState(() {
-      _confirmPassObscureText = !_confirmPassObscureText;
     });
   }
 
@@ -44,8 +38,8 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
         keyboardType: TextInputType.emailAddress,
         validator: (value) {
-          if (value!.trim().isEmpty) {
-            return 'Email is reuired';
+          if (value == null || value.trim().isEmpty) {
+            return 'Email is required';
           }
           if (!RegExp(
                   r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
@@ -55,7 +49,7 @@ class _SignInScreenState extends State<SignInScreen> {
           return null;
         },
         onSaved: (String? value) {
-          user.email = value!.trim();
+          email = value!.trim();
         },
       ),
     );
@@ -82,30 +76,35 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
         obscureText: _passObscureText,
         validator: (value) {
-          if (value!.isEmpty) {
-            return 'Password is reuired';
+          if (value == null || value.trim().isEmpty) {
+            return 'Password is required';
           }
           if (value.length < 8) {
             return 'Password must be at least 8 characters';
           }
           return null;
         },
+        onSaved: (String? value) {
+          password = value!.trim();
+        },
       ),
     );
   }
 
-  Widget _buildSignInBtn() {
+  Widget _buildSignInBtn(BuildContext context) {
+    final authBloc = BlocProvider.of<AuthenticationBloc>(context);
     return Center(
         child: RoundButton(
       textOnButton: 'Sign In',
-      onPressed: () {
-        navigateToUserInfo();
-        // if (!_formKey.currentState!.validate()) {
-        //   return;
-        // } else {
-        //   _formKey.currentState!.save();
-        //   navigateToUserInfo(user);
-        // }
+      onPressed: () async {
+        if (!_formKey.currentState!.validate()) {
+          return;
+        } else {
+          _formKey.currentState!.save();
+          final User? user = await authBloc.authRepository
+              .signInWithCredentials(email!, password!);
+          if (user != null) authBloc.add(LoggedIn(user));
+        }
       },
     ));
   }
@@ -123,12 +122,6 @@ class _SignInScreenState extends State<SignInScreen> {
         ],
       ),
     );
-  }
-
-  void navigateToUserInfo() {
-    print('navigationg');
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => RootScreen()));
   }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -158,7 +151,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   _buildEmail(),
                   _buildPassword(),
                   Container(height: 22),
-                  _buildSignInBtn(),
+                  _buildSignInBtn(context),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -4,7 +4,6 @@ import 'package:football_not_soccer/core/authentication/bloc/authentication_bloc
 import 'package:football_not_soccer/core/authentication/bloc/authentication_state.dart';
 import 'package:football_not_soccer/core/authentication/bloc/authentication_event.dart';
 import 'package:football_not_soccer/core/authentication/sign_in_screen.dart';
-import 'package:football_not_soccer/core/authentication/sign_up_screen.dart';
 import 'package:football_not_soccer/core/root/root_screen.dart';
 import 'package:football_not_soccer/widgets/splash_screen.dart';
 
@@ -20,7 +19,7 @@ class AuthenticationWrapper extends StatelessWidget {
         if (state is Uninitialized)
           return SplashScreen();
         else if (state is Authenticated)
-          return RootScreen();
+          return RootScreen(user: state.user);
         else if (state is Unauthenticated) return SignInScreen();
         return Container();
       },

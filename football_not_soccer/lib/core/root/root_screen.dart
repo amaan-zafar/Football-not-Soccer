@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:football_not_soccer/config/icons/app_icons_icons.dart';
@@ -9,6 +10,9 @@ import 'package:football_not_soccer/core/profile/profile_screen.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class RootScreen extends StatefulWidget {
+  final User user;
+
+  const RootScreen({Key? key, required this.user}) : super(key: key);
   @override
   _RootScreenState createState() => _RootScreenState();
 }
@@ -42,7 +46,7 @@ class _RootScreenState extends State<RootScreen> {
               ),
               preferredSize: Size(width, 200))
           : null,
-      bottomNavigationBar: !kIsWeb ? buildNavBar() : null,
+      bottomNavigationBar: !kIsWeb ? buildNavBar() : Text(widget.user.email!),
     );
   }
 

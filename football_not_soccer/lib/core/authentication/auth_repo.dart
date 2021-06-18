@@ -14,20 +14,19 @@ class AuthRepository {
     return authService.signInWithFacebook();
   }
 
-  Future<void> signInWithCredentials(String email, String password) {
+  Future<User?> signInWithCredentials(String email, String password) {
     return authService.signInWithEmail(email, password);
+  }
+
+  Future<User?> signUpWithCredentials(String email, String password) {
+    return authService.signUpWithEmail(email, password);
   }
 
   Future signOut() async {
     await authService.signOut();
   }
 
-  Future<bool> isSignedIn() async {
-    final currentUser = authService.user;
-    return currentUser != null;
-  }
-
-  Future<String?> getUser() async {
-    return (authService.user)!.email;
+  Future<User?> getUser() async {
+    return authService.user;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 @immutable
@@ -12,12 +13,12 @@ abstract class AuthenticationState extends Equatable {
 class Uninitialized extends AuthenticationState {}
 
 class Authenticated extends AuthenticationState {
-  final String displayName;
+  final User user;
 
-  const Authenticated({required this.displayName});
+  const Authenticated({required this.user});
 
   @override
-  List<Object> get props => [displayName];
+  List<Object> get props => [user];
 }
 
 class Unauthenticated extends AuthenticationState {}
