@@ -21,12 +21,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="football_not_soccer">
+  
+  <meta name="google-signin-client_id" content="476259553956-hnrkfv7icnnns9re9sest3fguat1cknm.apps.googleusercontent.com">
+  
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <title>football_not_soccer</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <!-- START FACEBOOK SDK -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <!-- END FACEBOOK SDK  -->
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
@@ -93,9 +99,11 @@
       // Service workers not supported. Just drop the <script> tag.
       loadMainDartJs();
     }
+  
+  
   </script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
   

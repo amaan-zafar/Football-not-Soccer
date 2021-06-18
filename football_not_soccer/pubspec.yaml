@@ -33,8 +33,9 @@ dependencies:
   firebase_analytics: ^8.1.2
   firebase_auth: ^1.4.1
   google_sign_in: ^5.0.4
-  flutter_facebook_auth: "^1.0.0"
-  flutter_twitter_login: ^1.1.0
+  flutter_facebook_auth: ^3.4.1
+  # flutter_twitter_login: ^1.1.0
+  auth_buttons: ^1.0.1+4
   # Bottom bar with cool animation
   salomon_bottom_bar: ^3.0.0
   http: ^0.13.3

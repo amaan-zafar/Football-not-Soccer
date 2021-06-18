@@ -6,7 +6,11 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text(AppStrings.PROFILE),
+        child: Row(
+          children: [
+            Text(AppStrings.PROFILE),
+          ],
+        ),
       ),
     );
   }
