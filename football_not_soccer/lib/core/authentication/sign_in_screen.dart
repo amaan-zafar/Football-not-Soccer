@@ -157,7 +157,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       Text('Not Registered ?'),
                       TextButton(
-                          onPressed: () => Navigator.push(context,
+                          onPressed: () => Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (_) => SignUp())),
                           child: Text('Register'))
                     ],
